@@ -12,7 +12,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello, World!")
 
 	payload, err := get_file("sample.txt")
 	if err != nil {
