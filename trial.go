@@ -19,7 +19,7 @@ func main() {
 		return
 	}
 
-	fmt.Println(payload) //debug
+	// fmt.Println(payload) //debug
 
 	// for _, fileName := range files {
         // fileContent, err := os.ReadFile(fileName)
