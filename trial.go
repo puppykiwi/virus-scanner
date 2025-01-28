@@ -2,7 +2,7 @@ package main
 
 import (
 	// "bytes"
-	// "encoding/json"
+	"encoding/json"
 	// "mime/multipart"
 	"strings"
 	"fmt"
@@ -49,6 +49,11 @@ func main() {
     body, _ := io.ReadAll(res.Body)
 
     fmt.Println(string(body))
+	
+	var file_id string = get_id(body)
+
+	fmt.Println(file_id)
+
 }
 
 func get_file(FileName string) (*strings.Reader, error) {
@@ -62,4 +67,26 @@ func get_file(FileName string) (*strings.Reader, error) {
 
 	fmt.Println("File Opened Successfully")
 	return payload, nil
+}
+
+func get_id (body []byte) string {
+	var id string = ""
+	fmt.Println(string(body))
+	var result map[string]interface{}
+	if err := json.Unmarshal(body, &result); err != nil {
+		fmt.Println("Error unmarshalling response:", err)
+		return ""
+	}
+
+	if data, ok := result["data"].(map[string]interface{}); ok {
+		if id, ok := data["id"].(string); ok {
+			fmt.Println(id)
+			
+		} else {
+			fmt.Println("ID not found in response")
+		}
+	} else {
+		fmt.Println("Data not found in response")
+	}
+	return id
 }
