@@ -71,7 +71,7 @@ func get_file(FileName string) (*strings.Reader, error) {
 
 func get_id (body []byte) string {
 	var id string = ""
-	fmt.Println(string(body))
+	// fmt.Println(string(body)) //debug
 	var result map[string]interface{}
 	if err := json.Unmarshal(body, &result); err != nil {
 		fmt.Println("Error unmarshalling response:", err)
