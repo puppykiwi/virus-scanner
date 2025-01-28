@@ -52,6 +52,8 @@ func main() {
 	var file_id string = get_id(body)
 
 	fmt.Println(file_id)
+	fmt.Println("Getting status of file")
+	get_status(file_id)
 
 }
 
@@ -88,4 +90,24 @@ func get_id (body []byte) string {
 		fmt.Println("Data not found in response")
 	}
 	return id
+}
+
+func get_status(file_id string) {
+	url := "https://www.virustotal.com/api/v3/files/" + file_id
+
+	req, _ := http.NewRequest("GET", url, nil)
+
+	req.Header.Add("accept", "application/json")
+	req.Header.Add("x-apikey", "f6335ba146578f6a07ddf8e11af1966423366278fda02b750262b4833bcbfedc")
+
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		fmt.Println("Error making request:", err)
+		return
+	}
+
+	defer res.Body.Close()
+	body, _ := io.ReadAll(res.Body)
+
+	fmt.Println(string(body))
 }
