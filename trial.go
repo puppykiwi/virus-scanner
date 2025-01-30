@@ -14,10 +14,6 @@ import (
 func main() {
 
 	payload, err := get_file("sample.txt")
-	if err != nil {
-		fmt.Println("Error getting file:", err)
-		return
-	}
 
 	// fmt.Println(payload) //debug
 
