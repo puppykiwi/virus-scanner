@@ -52,7 +52,6 @@ func main() {
 	
 	var file_id string = get_id(body)
 
-	fmt.Printf("File hash id: %s\n",file_id)
 	fmt.Println("Getting status of file")
 	get_status(file_id)
 
@@ -82,7 +81,7 @@ func get_id (body []byte) string {
 
 	if data, ok := result["data"].(map[string]interface{}); ok {
 		if id, ok := data["id"].(string); ok {
-			fmt.Println(id)
+			fmt.Printf("File hash ID: %s\n", id)
 			
 		} else {
 			fmt.Println("ID not found in response")
