@@ -13,7 +13,11 @@ import (
 
 func main() {
 
-	payload, err := get_file("sample.txt")
+	if len(os.Args) < 2 {
+		payload, err := get_file("sample.txt")
+	} else {
+		payload, err := get_file(os.Args[1])
+	}
 
 	// fmt.Println(payload) //debug
 
