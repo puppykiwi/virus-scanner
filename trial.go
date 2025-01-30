@@ -47,6 +47,7 @@ func main() {
     defer res.Body.Close()
     body, _ := io.ReadAll(res.Body)
 
+	
     fmt.Println(string(body))
 	
 	var file_id string = get_id(body)
@@ -66,7 +67,7 @@ func get_file(FileName string) (*strings.Reader, error) {
 
 	payload := strings.NewReader(fmt.Sprintf("-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"file\"; filename=\"%s\"\r\nContent-Type: text/plain\r\n\r\n%s\r\n-----011000010111000001101001--", FileName, fileContent))
 
-	fmt.Println("File Opened Successfully")
+	fmt.Printf("File [%s] is being scanned\n", FileName)
 	return payload, nil
 }
 
