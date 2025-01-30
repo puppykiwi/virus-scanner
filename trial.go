@@ -52,7 +52,7 @@ func main() {
 	
 	var file_id string = get_id(body)
 
-	fmt.Println("Getting status of file")
+	
 	get_status(file_id)
 
 }
@@ -109,5 +109,6 @@ func get_status(file_id string) {
 	defer res.Body.Close()
 	body, _ := io.ReadAll(res.Body)
 
+	fmt.Println("Getting status of file")
 	fmt.Println(string(body))
 }
