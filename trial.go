@@ -47,7 +47,7 @@ func main() {
     defer res.Body.Close()
     body, _ := io.ReadAll(res.Body)
 
-	
+	fmt.Printf("\n*Printing VirusTotal Response*\n")
     fmt.Println(string(body))
 	
 	var file_id string = get_id(body)
