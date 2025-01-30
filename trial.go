@@ -52,7 +52,7 @@ func main() {
 	
 	var file_id string = get_id(body)
 
-	fmt.Println(file_id)
+	fmt.Printf("File hash id: %s\n",file_id)
 	fmt.Println("Getting status of file")
 	get_status(file_id)
 
